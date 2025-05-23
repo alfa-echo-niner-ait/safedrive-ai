@@ -1,0 +1,14 @@
+https://mirrors.aliyun.com/pypi/simple/
+https://pypi.tuna.tsinghua.edu.cn/simple
+https://mirrors.cloud.tencent.com/pypi/simple
+
+mediapipe fix:
+pip install --default-timeout=100 mediapipe -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+py -3.10 -m venv venv_mediapipe
+
+chrome://flags/#unsafely-treat-insecure-origin-as-secure
+
+ngrok config add-authtoken 2xUPpOVWTX11253r2EN0goUyZJN_2n8dWdsicWiPKbzN58hyP
+
+ngrok http http://localhost:8080
