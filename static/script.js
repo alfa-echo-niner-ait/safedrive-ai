@@ -50,6 +50,7 @@ setInterval(() => {
 			statusDisplay.textContent = data.is_drowsy ? "Drowsy" : "Awake";
 
 			if (data.is_drowsy) {
+				video.classList.add("red-glow", "flashing"); 
 				alertBox.style.display = "block";
 				try {
 					alarmSound.currentTime = 0;
@@ -58,6 +59,7 @@ setInterval(() => {
 					console.log("Audio play failed", e);
 				}
 			} else {
+				video.classList.remove("red-glow", "flashing"); 
 				alertBox.style.display = "none";
 			}
 		});

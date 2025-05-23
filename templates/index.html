@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>🚗 Drowsiness Detection</title>
+		<title>Drowsiness Detection</title>
 		<style>
 			body {
 				font-family: Arial, sans-serif;
@@ -12,8 +12,13 @@
 				text-align: center;
 				margin: 0;
 				padding: 0;
+				display: flex;
+				flex-direction: column;
+				min-height: 100vh;
 			}
-
+			main {
+				flex-grow: 1;
+			}
 			.container {
 				display: flex;
 				flex-direction: column;
@@ -21,15 +26,32 @@
 				justify-content: flex-start;
 				padding-top: 30px;
 			}
-
 			video {
 				width: 90%;
-				max-width: 400px;
+				max-width: 700px;
 				border: 3px solid #444;
 				border-radius: 8px;
 				margin-bottom: 20px;
+				transition: box-shadow 0.3s ease, border-color 0.3s ease;
 			}
-
+			.red-glow {
+				border-color: red;
+				box-shadow: 0 0 10px red, 0 0 20px darkred;
+			}
+			@keyframes redPulse {
+				0% {
+					box-shadow: 0 0 5px red;
+				}
+				50% {
+					box-shadow: 0 0 20px red, 0 0 30px darkred;
+				}
+				100% {
+					box-shadow: 0 0 5px red;
+				}
+			}
+			.red-glow.flashing {
+				animation: redPulse 1.5s infinite;
+			}
 			.status-box {
 				background: rgba(0, 0, 0, 0.6);
 				padding: 15px 25px;
@@ -37,37 +59,49 @@
 				font-size: 18px;
 				margin-bottom: 20px;
 			}
-
 			.alert {
 				color: red;
 				font-size: 24px;
 				font-weight: bold;
-				margin-top: 10px;
+				margin-bottom: 10px;
 				display: none;
 			}
-
 			.footer {
 				font-size: 14px;
 				color: #aaa;
 				margin-top: 30px;
+				margin-bottom: 15px;
+			}
+			.footer a {
+				text-decoration: none;
+				font-weight: bold;
+				font-style: italic;
+				color: #aaa;
 			}
 		</style>
 	</head>
 	<body>
-		<div class="container">
-			<h1>🚗 Driver Drowsiness Detection</h1>
+		<main>
+			<h1>Driver Drowsiness Detection</h1>
+			<div class="container">
+				<video id="video" autoplay playsinline></video>
 
-			<video id="video" autoplay playsinline></video>
+				<div id="alert" class="alert">⚠️ DROWSINESS DETECTED!</div>
 
-			<div class="status-box">
-				EAR: <span id="earValue">--</span><br />
-				Status: <span id="status">Awake</span>
+				<div class="status-box">
+					EAR: <span id="earValue">--</span><br />
+					Status: <span id="status">Awake</span>
+				</div>
 			</div>
-
-			<div id="alert" class="alert">⚠️ DROWSINESS DETECTED!</div>
+		</main>
+		<div class="footer">
+			Developed by
+			<a
+				href="https://github.com/alfa-echo-niner-ait?tab=repositories"
+				target="_blank"
+				>alfa-echo-niner-ait
+			</a>
 		</div>
-
-		<div class="footer">Powered by <b>Emon</b></div>
 
 		<audio
 			id="alarm"
