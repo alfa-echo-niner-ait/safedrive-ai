@@ -7,8 +7,6 @@ pip install --default-timeout=100 mediapipe -i https://pypi.tuna.tsinghua.edu.cn
 
 py -3.10 -m venv venv_mediapipe
 
-chrome://flags/#unsafely-treat-insecure-origin-as-secure
-
 ngrok config add-authtoken 2xUPpOVWTX11253r2EN0goUyZJN_2n8dWdsicWiPKbzN58hyP
 
 ngrok http 5000

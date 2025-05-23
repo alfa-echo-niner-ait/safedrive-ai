@@ -4,82 +4,10 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Drowsiness Detection</title>
-		<style>
-			body {
-				font-family: Arial, sans-serif;
-				background-color: #1e1e1e;
-				color: white;
-				text-align: center;
-				margin: 0;
-				padding: 0;
-				display: flex;
-				flex-direction: column;
-				min-height: 100vh;
-			}
-			main {
-				flex-grow: 1;
-			}
-			.container {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: flex-start;
-				padding-top: 30px;
-			}
-			video {
-				transform: scaleX(-1);
-				width: 90%;
-				max-width: 700px;
-				border: 3px solid #444;
-				border-radius: 8px;
-				margin-bottom: 20px;
-				transition: box-shadow 0.3s ease, border-color 0.3s ease;
-			}
-			.red-glow {
-				border-color: red;
-				box-shadow: 0 0 10px red, 0 0 20px darkred;
-			}
-			@keyframes redPulse {
-				0% {
-					box-shadow: 0 0 5px red;
-				}
-				50% {
-					box-shadow: 0 0 20px red, 0 0 30px darkred;
-				}
-				100% {
-					box-shadow: 0 0 5px red;
-				}
-			}
-			.red-glow.flashing {
-				animation: redPulse 1.5s infinite;
-			}
-			.status-box {
-				background: rgba(0, 0, 0, 0.6);
-				padding: 15px 25px;
-				border-radius: 10px;
-				font-size: 18px;
-				margin-bottom: 20px;
-			}
-			.alert {
-				color: red;
-				font-size: 24px;
-				font-weight: bold;
-				margin-bottom: 10px;
-				display: none;
-			}
-			.footer {
-				font-size: 14px;
-				color: #aaa;
-				margin-top: 30px;
-				margin-bottom: 15px;
-			}
-			.footer a {
-				text-decoration: none;
-				font-weight: bold;
-				font-style: italic;
-				color: #aaa;
-			}
-		</style>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='styles.css') }}"
+		/>
 	</head>
 	<body>
 		<main>
@@ -109,7 +37,6 @@
 			src="{{ url_for('static', filename='alarm.wav') }}"
 			preload="auto"
 		></audio>
-
 		<script src="{{ url_for('static', filename='script.js') }}"></script>
 	</body>
 </html>
